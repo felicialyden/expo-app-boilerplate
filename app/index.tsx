@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Platform, StyleSheet } from 'react-native';
+import { Button } from 'react-native-paper';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -14,6 +15,9 @@ export default function Page() {
       </Link>
       <Link href="/register">Register</Link>
       <Link href="/forgotPassword">Forgot Password?</Link>
+      <Button onPress={() => console.log('hello')}>
+        <Text>Hello</Text>
+      </Button>
       <View
         style={styles.separator}
         lightColor="#eee"
