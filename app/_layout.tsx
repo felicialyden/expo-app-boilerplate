@@ -1,14 +1,17 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
+import { ThemeProvider } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
+import {
+  DarkTheme,
+  DefaultTheme,
+  MD3DarkTheme,
+  MD3LightTheme,
+} from '../assets/themes';
+import { StatusBar } from 'expo-status-bar';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -48,14 +51,14 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-  // <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-  // options={{ headerShown: false }}
+  const darkMode = useColorScheme() === 'dark';
+
   return (
-    <PaperProvider>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="index" />
+    <PaperProvider theme={darkMode ? MD3DarkTheme : MD3LightTheme}>
+      <ThemeProvider value={darkMode ? DarkTheme : DefaultTheme}>
+        <Stack screenOptions={{ headerTitleAlign: 'center' }}>
+          <StatusBar style={darkMode ? 'dark' : 'light'} />
+          <Stack.Screen name="index" options={{ title: 'Login' }} />
           <Stack.Screen name="auth" options={{ headerShown: false }} />
         </Stack>
       </ThemeProvider>
