@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Text } from 'react-native-paper';
 import { Link } from 'expo-router';
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome</Text>

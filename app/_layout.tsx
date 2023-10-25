@@ -57,7 +57,6 @@ function RootLayoutNav() {
     <PaperProvider theme={darkMode ? MD3DarkTheme : MD3LightTheme}>
       <ThemeProvider value={darkMode ? DarkTheme : DefaultTheme}>
         <Stack screenOptions={{ headerTitleAlign: 'center' }}>
-          <StatusBar style={darkMode ? 'dark' : 'light'} />
           <Stack.Screen name="index" options={{ title: 'Login' }} />
           <Stack.Screen name="auth" options={{ headerShown: false }} />
         </Stack>
