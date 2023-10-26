@@ -1,6 +1,6 @@
 import { StyleSheet, View, useColorScheme } from 'react-native';
-import { TextInput, Text } from 'react-native-paper';
-import { Link } from 'expo-router';
+import { Text, Button } from 'react-native-paper';
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 export default function LoginPage() {
@@ -9,10 +9,14 @@ export default function LoginPage() {
   return (
     <View style={styles.container}>
       <StatusBar style={darkMode ? 'light' : 'dark'} />
-      <Text style={styles.title}>LOGIN</Text>
-      <Link href="/auth/(tabs)/home" replace>
-        Login
-      </Link>
+      <Text style={styles.title}>Welcome</Text>
+      <Button
+        style={styles.button}
+        mode="contained-tonal"
+        onPress={() => router.replace('/auth/(tabs)/home')}
+      >
+        <Text>Login</Text>
+      </Button>
     </View>
   );
 }
@@ -23,8 +27,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   title: {
+    marginBottom: 100,
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  button: {
+    margin: 20,
   },
 });
