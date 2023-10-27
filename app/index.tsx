@@ -1,6 +1,6 @@
 import { StyleSheet, View, useColorScheme } from 'react-native';
 import { Text, Button } from 'react-native-paper';
-import { router } from 'expo-router';
+import { router, Link} from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 export default function LoginPage() {
@@ -17,6 +17,7 @@ export default function LoginPage() {
       >
         <Text>Login</Text>
       </Button>
+      <Link href="/register">Register</Link>
     </View>
   );
 }
