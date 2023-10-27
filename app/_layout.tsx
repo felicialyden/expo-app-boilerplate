@@ -11,7 +11,7 @@ import {
   MD3DarkTheme,
   MD3LightTheme,
 } from '../assets/themes';
-import { StatusBar } from 'expo-status-bar';
+import { StoreContextProvider } from '../context/store';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -54,13 +54,15 @@ function RootLayoutNav() {
   const darkMode = useColorScheme() === 'dark';
 
   return (
-    <PaperProvider theme={darkMode ? MD3DarkTheme : MD3LightTheme}>
-      <ThemeProvider value={darkMode ? DarkTheme : DefaultTheme}>
-        <Stack screenOptions={{ headerTitleAlign: 'center' }}>
-          <Stack.Screen name="index" options={{ title: 'Login' }} />
-          <Stack.Screen name="auth" options={{ headerShown: false }} />
-        </Stack>
-      </ThemeProvider>
-    </PaperProvider>
+    <StoreContextProvider>
+      <PaperProvider theme={darkMode ? MD3DarkTheme : MD3LightTheme}>
+        <ThemeProvider value={darkMode ? DarkTheme : DefaultTheme}>
+          <Stack screenOptions={{ headerTitleAlign: 'center' }}>
+            <Stack.Screen name="index" options={{ title: 'Login' }} />
+            <Stack.Screen name="auth" options={{ headerShown: false }} />
+          </Stack>
+        </ThemeProvider>
+      </PaperProvider>
+    </StoreContextProvider>
   );
 }
