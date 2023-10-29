@@ -1,5 +1,5 @@
 import { StyleSheet, View, useColorScheme } from 'react-native';
-import { Text, Button } from 'react-native-paper';
+import { Text, Button, TextInput } from 'react-native-paper';
 import { router, Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
@@ -10,6 +10,8 @@ export default function LoginPage() {
     <View style={styles.container}>
       <StatusBar style={darkMode ? 'light' : 'dark'} />
       <Text style={styles.title}>Welcome</Text>
+      <TextInput label="Username" />
+      <TextInput label="Password" />
       <Button
         style={styles.button}
         mode="contained"
