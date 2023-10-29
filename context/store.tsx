@@ -1,4 +1,10 @@
-import React, { useState, FunctionComponent, useMemo, useEffect } from 'react';
+import {
+  useState,
+  FunctionComponent,
+  useMemo,
+  useEffect,
+  createContext,
+} from 'react';
 
 type ContextType = {
   isSignedIn: boolean;
@@ -10,7 +16,7 @@ type StoreContextProps = {
   children: React.ReactNode;
 };
 
-const StoreContext = React.createContext<ContextType>({
+const StoreContext = createContext<ContextType>({
   isSignedIn: false,
   qrData: null,
   setQrData: () => {},
@@ -23,8 +29,8 @@ export const StoreContextProvider: FunctionComponent<StoreContextProps> = (
   const [qrData, setQrData] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only runs once
-    // Fetches firebase user
+    // Only runs once when the application starts
+    // Fetch firebase user here
   }, []);
 
   const state = useMemo(
