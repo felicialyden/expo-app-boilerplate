@@ -1,27 +1,54 @@
-import { StyleSheet, View, useColorScheme } from 'react-native';
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  StyleSheet,
+  Platform,
+  useColorScheme,
+} from 'react-native';
 import { Text, Button, TextInput } from 'react-native-paper';
 import { router, Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 
 export default function LoginPage() {
   const darkMode = useColorScheme() === 'dark';
-
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <StatusBar style={darkMode ? 'light' : 'dark'} />
       <Text style={styles.title}>Welcome</Text>
-      <TextInput label="Username" />
-      <TextInput label="Password" />
-      <Button
-        style={styles.button}
-        mode="contained"
-        onPress={() => router.replace('/auth/(tabs)/home')}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
-        Login
+        <TextInput
+          mode="outlined"
+          label="Username"
+          value={username}
+          onChangeText={setUsername}
+        />
+        <TextInput
+          mode="outlined"
+          label="Password"
+          value={password}
+          onChangeText={setPassword}
+        />
+        <Link style={styles.forgotPassword} href="/forgotPassword">
+          Forgot password?
+        </Link>
+        <Button
+          style={styles.button}
+          mode="contained"
+          onPress={() => router.replace('/auth/(tabs)/home')}
+        >
+          Login
+        </Button>
+      </KeyboardAvoidingView>
+      <Text style={styles.divider}>or</Text>
+      <Button style={styles.button} mode="contained-tonal">
+        <Link href="/register">Register</Link>
       </Button>
-      <Link href="/register">Register</Link>
-      <Link href="/forgotPassword">Forgot password</Link>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -31,13 +58,28 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
+  divider: {
+    marginVertical: 10,
+  },
   title: {
     marginBottom: 100,
     fontSize: 20,
     fontWeight: 'bold',
   },
+  subTitle: {
+    marginBottom: 100,
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
+  forgotPassword: {
+    marginLeft: 100,
+    fontStyle: 'italic',
+    color: 'grey',
+    marginBottom: 40,
+    fontSize: 12,
+  },
   button: {
-    margin: 20,
+    width: 209,
   },
 });

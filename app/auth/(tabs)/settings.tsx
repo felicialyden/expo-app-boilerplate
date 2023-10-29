@@ -9,7 +9,7 @@ export default function SettingsScreen() {
       <Button
         style={styles.button}
         onPress={() => router.replace('/')}
-        mode="contained-tonal"
+        mode="contained"
       >
         Logout
       </Button>
