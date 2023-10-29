@@ -20,6 +20,7 @@ export default function LoginPage() {
         Login
       </Button>
       <Link href="/register">Register</Link>
+      <Link href="/forgotPassword">Forgot password</Link>
     </View>
   );
 }
