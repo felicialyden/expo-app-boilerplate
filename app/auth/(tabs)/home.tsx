@@ -38,7 +38,12 @@ export default function HomeScreen() {
           style={styles.input}
           onChangeText={setValue}
         />
-        <Button style={styles.button} mode="contained" onPress={handleQr}>
+        <Button
+          style={styles.button}
+          mode="contained"
+          onPress={handleQr}
+          disabled={value.length === 0}
+        >
           Generate QR image
         </Button>
       </KeyboardAvoidingView>
