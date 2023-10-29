@@ -6,15 +6,18 @@ import {
 } from 'react-native';
 import { Button, Text, TextInput } from 'react-native-paper';
 import { router } from 'expo-router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import StoreContext from '../../../context/store';
 
 export default function HomeScreen() {
   const [value, setValue] = useState('');
+  const { setQrData } = useContext(StoreContext);
 
   const handleQr = () => {
     // set qr data to global state so it can be used in /qrCode page
+    setQrData(value);
     setValue('');
-    router.push('/qr');
+    router.push('/modal');
   };
 
   return (
@@ -27,18 +30,16 @@ export default function HomeScreen() {
           Input the text you'd like the QR image to encode.
         </Text>
         <TextInput
+          placeholder="Enter text here.."
+          value={value}
           multiline={true}
           numberOfLines={10}
           mode="outlined"
           style={styles.input}
           onChangeText={setValue}
         />
-        <Button
-          style={styles.button}
-          mode="contained-tonal"
-          onPress={() => router.replace('/auth/(tabs)/home')}
-        >
-          <Text>Generate qr image</Text>
+        <Button style={styles.button} mode="contained" onPress={handleQr}>
+          Generate QR image
         </Button>
       </KeyboardAvoidingView>
     </ScrollView>
