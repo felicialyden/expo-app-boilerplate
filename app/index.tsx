@@ -1,6 +1,6 @@
 import { StyleSheet, View, useColorScheme } from 'react-native';
 import { Text, Button } from 'react-native-paper';
-import { router, Link} from 'expo-router';
+import { router, Link } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 
 export default function LoginPage() {
@@ -12,10 +12,10 @@ export default function LoginPage() {
       <Text style={styles.title}>Welcome</Text>
       <Button
         style={styles.button}
-        mode="contained-tonal"
+        mode="contained"
         onPress={() => router.replace('/auth/(tabs)/home')}
       >
-        <Text>Login</Text>
+        Login
       </Button>
       <Link href="/register">Register</Link>
     </View>

@@ -11,7 +11,7 @@ export default function SettingsScreen() {
         onPress={() => router.replace('/')}
         mode="contained-tonal"
       >
-        <Text>Logout</Text>
+        Logout
       </Button>
     </View>
   );

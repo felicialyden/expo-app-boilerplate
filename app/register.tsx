@@ -7,24 +7,24 @@ export default function RegisterPage() {
       <Text style={styles.title}>Register with</Text>
       <Button
         style={styles.button}
-        mode="contained-tonal"
+        mode="contained"
         onPress={() => console.log('clicked')}
       >
-        <Text>Google</Text>
+        Google
       </Button>
       <Button
         style={styles.button}
-        mode="contained-tonal"
+        mode="contained"
         onPress={() => console.log('clicked')}
       >
-        <Text>Apple</Text>
+        Apple
       </Button>
       <Button
         style={styles.button}
-        mode="contained-tonal"
+        mode="contained"
         onPress={() => console.log('clicked')}
       >
-        <Text>Facebook</Text>
+        Facebook
       </Button>
     </View>
   );
